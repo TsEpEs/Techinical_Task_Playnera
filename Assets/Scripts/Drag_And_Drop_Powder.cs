@@ -3,11 +3,10 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine.WSA;
 
 public class Drag_And_Drop_Powder : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    //Script for move Powder
     public Canvas mainCanvas;
     public Image brush;
     public Image hand;
@@ -28,6 +27,7 @@ public class Drag_And_Drop_Powder : MonoBehaviour, IDragHandler, IBeginDragHandl
 
     public static void saveTyprPowder(string str)
     {
+        //Use for save type of powder and play correct animation
         typePowder = str;
     }
     public void OnMouseDown()
@@ -35,6 +35,7 @@ public class Drag_And_Drop_Powder : MonoBehaviour, IDragHandler, IBeginDragHandl
     }
     public void OnDrag(PointerEventData eventData)
     {
+        //Move object
         brush.rectTransform.anchoredPosition += eventData.delta * 1.78f;
         hand.rectTransform.anchoredPosition += eventData.delta * 1.78f;
         brush.raycastTarget = false;
@@ -42,9 +43,11 @@ public class Drag_And_Drop_Powder : MonoBehaviour, IDragHandler, IBeginDragHandl
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        //Check position
         brush.raycastTarget = true;
         if (brushAroundFace)
         {
+            //On animation
             anim.GetComponent<Animator>().enabled = true;
             StartCoroutine(WaitForAnimationEnd());
         }
@@ -61,6 +64,7 @@ public class Drag_And_Drop_Powder : MonoBehaviour, IDragHandler, IBeginDragHandl
 
     IEnumerator WaitForAnimationEnd()
     {
+        //Play animation and on visible make up
         col = new Color (255, 255, 255, 0f);
         powderOnface[0].color = col;
         powderOnface[1].color = col;
@@ -97,8 +101,6 @@ public class Drag_And_Drop_Powder : MonoBehaviour, IDragHandler, IBeginDragHandl
                 } while (col.a < 1);
                 yield return new WaitForSeconds(1);
                 break;
-
-
         }
     }
 }

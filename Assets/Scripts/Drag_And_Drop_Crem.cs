@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Drag_And_Drop_Crem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-
+    //Simillar script on anoteher Drag and Drop
     private Canvas mainCanvas;
     public Image crem;
     public Image hand;

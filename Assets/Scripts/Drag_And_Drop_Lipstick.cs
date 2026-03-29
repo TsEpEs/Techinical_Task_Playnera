@@ -3,11 +3,10 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine.WSA;
 
 public class Drag_And_Drop_Lipstick : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    //Simillar script on anoteher Drag and Drop
     public Canvas mainCanvas;
     public Image lipstick;
     public Image hand;
